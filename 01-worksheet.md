@@ -63,11 +63,11 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 ### 📝 List bài toán của tôi:
 | # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
 |---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| 1 | **Xanh SM (GSM)** | Tốn thời gian | Điều phối viên tiếp nhận và xử lý thủ công các báo cáo khẩn cấp từ tài xế về sự cố pin/sạc thực địa (mất 12-15 phút/lượt tra cứu trạm sạc VinFast còn trụ trống, xác định tọa độ GPS và soạn hướng dẫn). |
+| 2 | **VinFast** | AI có thể tốt hơn | Khách hàng mô tả lỗi xe điện (tiếng kêu gầm, lỗi cảm biến, hao pin bất thường) bằng ngôn ngữ tự nhiên tiếng Việt qua App VinFast; hệ thống hiện tại chưa tự động phân loại mã lỗi kỹ thuật ban đầu để hướng dẫn an toàn và đặt lịch bảo dưỡng. |
+| 3 | **Vinhomes** | Lặp lại | Ban quản lý tòa nhà phải đọc và phân loại thủ công hàng trăm phản ánh/khiếu nại mỗi ngày qua App Vinhomes Resident (mất nước, hỏng đèn hành lang, tiếng ồn thi công) để điều phối đến đúng đội kỹ thuật từng phân khu. |
+| 4 | **Vinmec** | Pain từ người khác | Bác sĩ và điều dưỡng quá tải khi phải trích xuất thủ công các chỉ số xét nghiệm, chẩn đoán lâm sàng từ bệnh án điện tử để soạn thảo bản tóm tắt hồ sơ xuất viện (Discharge Summary) mất 20-30 phút/bệnh nhân. |
+| 5 | **Vinpearl** | Tốn thời gian | Bộ phận vận hành và kinh doanh mất 25-35 phút đọc email đặt phòng theo đoàn (Group Booking) phức tạp từ các công ty lữ hành, đối chiếu thủ công quỹ phòng trống trên hệ thống PMS và draft lệnh báo giá. |
 
 ---
 
@@ -75,26 +75,95 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 
 Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Problem Cards** dưới đây (10 phút/card).
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #___                                     │
+│ QUICK PROBLEM CARD #1                                       │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│ Bài toán: Tài xế Xanh SM báo cáo sự cố sạc pin / cạn pin    │
+│ giữa đường cần điều phối trạm sạc trống hoặc xe cứu hộ.     │
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
 │                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? Tài xế Xanh SM (lo lỡ chuyến/chờ đợi), │
+│ Điều phối viên Dispatcher (quá tải thao tác nhiều hệ thống).│
 │                                                             │
-│ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│ Workflow thủ công hiện tại (5 bước):                        │
+│   1. Tài xế gọi tổng đài điều vận báo mức pin nguy cấp      │
+│   → 2. Điều phối viên tra cứu thủ công vị trí GPS của xe     │
+│   → 3. Mở hệ thống CMS tra cứu trạm sạc VinFast còn trụ     │
+│   → 4. Soạn tin nhắn chỉ dẫn lộ trình gửi qua App tài xế    │
+│   → 5. Liên hệ đội Mobile Charger nếu pin cạn kiệt (<5%)    │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3 & 4 (⏱ 12 phút/lượt) │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 3 & 4            │
+│ (Tự động nhận diện toạ độ/mức pin -> gợi ý trạm -> draft tin)│
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
-│   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
+│ Đo thành công bằng gì (Metric có số)?                        │
+│   "Giảm thời gian xử lý sự cố từ 15 phút ──> dưới 3 phút;   │
+│    100% sự cố pin <5% được kích hoạt xe cứu hộ kịp thời."   │
 │                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #2                                       │
+│                                                             │
+│ Bài toán: Khách hàng mô tả lỗi xe điện bằng tiếng Việt trên  │
+│ App VinFast, cần phân loại sơ bộ mã lỗi & hướng dẫn an toàn.│
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Khách hàng lái xe điện (lo sợ mất an   │
+│ toàn), CSKH và Kỹ thuật viên xưởng dịch vụ VinFast.         │
+│                                                             │
+│ Workflow thủ công hiện tại (4 bước):                        │
+│   1. Khách gửi mô tả hiện tượng lạ trên xe qua App VinFast   │
+│   → 2. CSKH đọc văn bản, tra cứu cẩm nang kỹ thuật/mã DTC   │
+│   → 3. CSKH hỏi kỹ thuật viên nếu hiện tượng phức tạp/hiếm  │
+│   → 4. Soạn tin khuyến cáo an toàn và hướng dẫn đặt lịch    │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 2 & 3 (⏱ 18 phút/lượt) │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2 & 4            │
+│ (Trích xuất triệu chứng, map sang mã lỗi & draft khuyến cáo)│
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                        │
+│   "Giảm thời gian tư vấn lỗi ban đầu từ 20 phút ──> under 2m│
+│    Độ chính xác phân loại nhóm lỗi kỹ thuật đạt >85%."      │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #4                                       │
+│                                                             │
+│ Bài toán: Bác sĩ & điều dưỡng phải trích xuất thủ công dữ   │
+│ liệu EHR để soạn thảo tóm tắt bệnh án xuất viện Vinmec.     │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│                     [x] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Bác sĩ điều trị & điều dưỡng Vinmec    │
+│ (quá tải hành chính), Bệnh nhân (chờ đợi xuất viện lâu).    │
+│                                                             │
+│ Workflow thủ công hiện tại (5 bước):                        │
+│   1. Bác sĩ mở hồ sơ bệnh án điện tử (EHR) bệnh nhân        │
+│   → 2. Rà soát kết quả xét nghiệm, chẩn đoán, thuốc đã dùng │
+│   → 3. Tóm tắt diễn tiến điều trị trong đợt nằm viện        │
+│   → 4. Gõ văn bản tóm tắt xuất viện bằng tiếng Việt dễ hiểu │
+│   → 5. Bác sĩ ký duyệt bản cứng/số và trao tay bệnh nhân    │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 2 & 4 (⏱ 25 phút/lượt) │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Bước 2, 3 & 4         │
+│ (Trích xuất chỉ số chính, tổng hợp diễn tiến & draft tóm tắt)│
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)?                        │
+│   "Giảm thời gian soạn tóm tắt xuất viện từ 25m ──> under 5m│
+│    100% hồ sơ xuất viện phải qua Bác sĩ duyệt ký (HITL)."   │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
 ```
 
