@@ -61,16 +61,12 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 > *"Tôi là AI Engineer tại Vin Smart Future (Vingroup). Tôi đang tìm kiếm các pain point vận hành cụ thể có thể tối ưu bằng AI cho mảng [Chọn một: VinFast / Xanh SM / Vinhomes / Vinmec]. Hãy gợi ý cho tôi 5 quy trình nghiệp vụ thủ công, tốn nhiều thời gian và gây rò rỉ hiệu suất kèm con số thống kê ước tính về tổn thất."*
 
 ### 📝 List bài toán của tôi:
-| # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
-|---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
-
----
-
+|---|----------------------------------|------|---------------------| | 1 | Vinhomes | Time-consuming + AI-upgrade | Nhân viên CSKH phải đọc thủ công phản ánh của cư dân, xác định loại vấn đề, mức độ ưu tiên, phòng ban phụ trách và tự soạn phản hồi. 
+| | 2 | VinFast | Repetitive + Time-consuming | Nhân viên hậu mãi phải đọc, tóm tắt và phân loại ticket liên quan tới pin, sạc, bảo hành, phần mềm và dịch vụ trước khi chuyển cho kỹ thuật viên. 
+| | 3 | Xanh SM | Stakeholder Pain + AI-upgrade | Khiếu nại về chuyến đi phải được đọc thủ công để phân loại thành thanh toán, tài xế, đồ thất lạc, an toàn hoặc lỗi ứng dụng. 
+| | 4 | Vinmec | Time-consuming | Nhân viên hành chính phải đọc các câu hỏi lặp lại về lịch khám, giấy tờ, địa điểm và chuyển đúng bộ phận. AI chỉ hỗ trợ hành chính, không chẩn đoán y khoa. 
+| | 5 | Vinpearl / VinWonders | Repetitive + AI-upgrade | Nhân viên CSKH phải trả lời nhiều câu hỏi ngôn ngữ tự nhiên về loại vé, giờ mở cửa, dịch vụ, đổi lịch và hướng dẫn khách hàng. |
+ ---
 # 🃏 Phase 2 — QUICK-ASSESS (Cá nhân, 30 min)
 
 Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Problem Cards** dưới đây (10 phút/card).
